@@ -1,0 +1,446 @@
+
+map and filter always return something
+
+---- ARRAY HELPERS  ----
+
+1) map excample
+function converteuros(price){
+  return price * 0.88;
+}
+let europrice = cars.map(function(car){
+return `${car.name} is ${converteuros(car.price)} euros `;
+
+});
+console.log(europrice);
+
+2) 
+filter excample
+
+let premchannels = channels.filter(function (channel){
+
+  return channel.premium === true;
+})
+console.log(premchannels);
+
+filter excample 2
+
+const channels = [
+   {name:'HBO',premium:true},
+   {name:'LIFE',premium:false},
+   {name:'Max',premium:true},
+   {name:'Cooking channel',premium:false},
+   {name:'WOBI',premium:false}
+];
+const user = {
+   name:'Francis',
+   premium:true,
+   premiumChannels:function(){
+      const $this = this;
+        return channels.filter(function (channel){
+         return channel.premium && $this.premium;
+        });
+
+    
+   },
+   channels:function(){
+       let nonpremiumChannels = channels.filter(function(channel){
+        return channel.premium === false;
+
+       });
+       return nonpremiumChannels;
+   }
+}
+console.log(user.premiumChannels())
+// brings HBO and MAX
+console.log(user.channels())
+// brings LIFE, COOCKING CHANNEL AND WOBI
+
+3) find if it finds true it breaks this is the diference with filter
+
+4) every _some
+
+// every
+function isBelowThreshold(currentValue) {
+  return currentValue < 40;
+}
+
+var array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold));
+// expected output: true
+//every 
+//some
+var ages = [3, 10, 18, 20];
+
+function checkAdult(age) {
+  return age >= 18;
+}
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = ages.some(checkAdult);
+}
+//some
+
+5) reduce
+ex 1
+const trips = [
+   {to:'Brazil',distance:1000},
+   {to:'Chine',distance: 2500},
+   {to:'India',distance: 3000}
+]
+
+let km = trips.reduce(function (sum, trip) {
+  return sum + trip.distance;
+
+
+}, 0);
+console.log(km);
+
+ex 2
+const computers = [
+   {type:'Laptop',price:124, os:'Windows'},
+   {type:'Desk',price:124, os:'Mac'},
+   {type:'Desk',price:124, os:'Windows'},
+   {type:'Laptop',price:124, os:'Mac'},
+   {type:'Laptop',price:124, os:'Windows'},
+];
+
+let winvsmac = computers.reduce(function (num, computer){
+ return computer.os === 'Windows' ? {mac:num.mac, win:num.win+1} : {mac:num.mac+1, win:num.win};
+  
+
+} ,{mac:0, win:0});
+console.log (winvsmac);
+
+6) for of is actualy foreach
+for(let num of numbers)
+
+FAT ARROW FUNCTIONS
+1) no function word
+2) if you want you can skip the {} 
+e.g.(y,x) => x + y;
+
+3) if there is only one argument then you can also skip the ()
+e.g. y => y + 10;
+
+(name, age) => {
+	
+	the function
+}
+fat arrow function doesn't change the scope
+if you only return something you don't need {}
+
+REST OPERATOR
+function args(...args)
+
+SPREAD OPERATOR
+const newArray = [...arr, ... atherArray]
+function showItems(arg1, ...arg2){
+   var arr = [...arg1,...arg2]
+   console.log(arr)
+}
+showItems(["dogs","cats"],"turtles","sharks");
+
+---- CLASSES ----
+
+class Car ={
+	
+	constructor({status,wheels,avail}){
+		this.status = status;
+		this.wheels = wheels;
+		this.avail = avail;
+	}
+}
+
+const car = new Car ({
+	status:'New',
+	wheels:4,
+	avail: ()=>{cosole.log('avail')}
+})
+console.log(car);
+
+class Ford etends Car{
+	constructor(){
+		super();
+	}
+}
+const car = new Car();
+const ford = new Ford();
+
+DESTRUCTURING
+for objects 
+const user = {
+	
+	name :'Amy',
+	lastname:'theod',
+	age : 35
+};
+const {name} = user; είναι ίσο με const name = user.name;
+
+επίσης μπορουμε να δηλωσουμε και τις 3 μεταβλητες με την μία κάπως έτσι 
+const {name, lastname, age} = user;
+
+const message = ({name, age}) => {
+	console.log(`My name is ${name} I am ${age} years old and something else ${aalute}`);
+}
+
+message(user, 'hey'); // εδώ του λες ότι βάζει τον user class
+
+for arrays
+
+const cars =[
+	'giaris',
+	'mikra',
+	'navara'
+];
+const [giaris, mikra, navara] = cars;
+
+console.log(giaris);
+
+
+// if you want to get the rest
+const[giaris, ...rest] = cars;
+console.logr(rest);
+
+// array mesa se object
+const users = {
+  names:['amalia', 'Xristina', 'Konstantina']
+}
+const {names:[name1,name2]} = users; //mesa sto array pernas ta onomata an 8eleis px na pareiw to deytero
+console.log(names2)
+
+//αυτό είναι για να περάσεις κατευθείαν τις μεταβλητές σου μέσα στην function με την βοήθεια ενος obj για να μην ξεχάσεις την σειρά των μεταβλητων πχ εδώ δεν υπάρχει τέτοιο θέμα γιατι απλά το όνομα του κάθε προπερτι του obj είναι και το όνομα τις μεταβλητης
+
+function createCar({brand,model, color, year,type}){
+
+
+}
+
+
+createCar('Ford', 'focus');
+
+const car ={
+  brand:'ford',
+  model: 'focus',
+  color: 'red',
+  year:'9999',
+  type:'fast'
+}
+createCar(car)
+
+DESTRUCTURING END
+---- PROMISE ----
+το promise είναι αυτό που σταματάει την εφαρμογη και περιμένει τα data από τον server για να συνεχίσει.
+
+//unresolved , Pending
+//Resolved, fulfiled
+//rejected
+let promise = new Promise((resolved, rejected)=>{
+	setTimeout(()=>{
+	 rejected();
+	}, 5000)
+})
+promise.then(()=>console.log('finished'));
+
+FETCH δηλαδη το fetch φέρνει δεδομένα από ένα url ή στέλνει δεδομένα ανάλογα με το get η post που θα του βάλουμε δηλαδη κάνει requests σε ένα url
+
+const url ='http://jsonplaceholder.typicode.com/posts/1';
+fetch(url)
+
+
+const url ='http://jsonplaceholder.typicode.com/posts/1';
+fetch(url, {
+	method:'GET', // εδώ περναμε ένα obj 
+	headers:{
+	'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({title:'a title'}),
+	mode:'cors',
+	//redirect:xxx,
+})
+.then(response => response.json()) // αυτό είναι απαραίτητο για να φέρει τα δεδομένα αλλιώς έχεις μόνο τα ονοματα και όχι τα actual data με αυτόν τον τρόπο φέρνεις kai τα data
+.then(data => console.log(data))
+.catch(error => console.log('wow', error)) // αν είναι άδειο κάτι από αυτά δεν σου βγάζει error
+
+---- STRINGS AND NUMBERS -----
+
+console.log('a string'.repeat( 2 * 3)); // this method repeats the string as many times as you wright in the parenthesis
+--
+var aword = 'camera';
+console.log(aword.startsWith('am', 1 ));// if you add a number it will search after this numver
+console.log(aword.endsWith('me', 4));// if you add a numper in endsWith it will check if the eg 4 letters ending with me so this it true 
+console.log(aword.includes('me', 2)) // again this if you add a number it check after the character of this number so in this case if you add 2 and  'ame' is going to be false with 'me' is true
+
+--
+console.log(Number.isSafeInteger(200)) // true
+console.log(Number.isSafeInteger(43)) // true
+console.log(Number.isSafeInteger(0.332223)) // false
+console.log(Number.isSafeInteger(0,3433)) // true
+console.log(Number.isInteger(200)) // true
+console.log(Number.isInteger(-1000)) // true
+console.log(Number.isInteger(0.1)) // false
+console.log(Math.trunc(42.8)) // 42 it rounds it but not realy it just gives you the first part
+console.log(Math.trunc(0.1)) //0
+console.log(Math.trunc(-0.1)) // -0
+
+---- MODULES ----
+--the file that exports                     
+export const sum = 10;
+export const otherSum = 10+10;
+export function random(){
+  return Math.random();
+}
+export const array = [1,2,3,4];
+export const obj = {id:1};
+
+-- the file that you export in you can export anything function vars arrays and obj
+import {
+  sum,
+  otherSum,
+  random,
+  array,
+  obj
+} from './app.js'
+
+console.log (sum);
+console.log (otherSum);
+console.log (random());
+console.log (array);
+console.log (obj);
+
+// you can use an alias in the export or in the import with the code as like this
+
+export{
+  sum as somethingelse,
+  otherSum,
+  random,
+  array,
+  obj
+  
+}
+//or at the import
+import{
+  sum as somethingelse,
+  otherSum,
+  random,
+  array,
+  obj
+  
+}
+//also you can export and import an intire file with an alias like this and it makes an obj you can use now
+import * as apple form './app.js';
+console.log(apple.sothingelse);
+--- 
+you can use export default like this
+const api = {
+
+  name:'api',
+  showName(){
+    console.log('my name');
+  }
+}
+export default api;
+
+import mainFunction from 'app.js'; // import for default will be with no cerly breses is better always to export an obj or a class all together and not seperetly a function etc.
+
+---- GENERATOR ----
+Generators are functions that you can stop somewhere inside and take a value like this
+
+
+function * genFunction(){ // the star means it is a generator
+
+  alert ('this is the first step');
+  yield 'step 1';
+
+  alert ('this is step two');
+  yield 'step 2';
+
+  alert ('something else');
+
+  yield'last step';
+
+  return 'finished';
+}
+
+let gen = genFunction();
+
+and then in some click or something it is going to continue to the next step in this case for the example you can run gen.next();
+
+
+---- 
+the following is an example that you use for of loop to get the values of a generator function you can do various stuff an get values and then push them to an array this seems usefull
+
+function * brands(){
+
+  //some function seartch for data in the data base 
+  yield 'apple';
+
+  // some function does something else
+  yield 'microsoft';
+  yield'hp';
+  yield'sony';
+  yield'mi';
+
+}
+
+let array  = [];
+
+for (var i of  brands()){
+
+  array =[...array,i];
+}
+
+console.log(array);
+
+-----
+the next example is that you can take whatever value you want from an obj without looping all the obj to find the values that you want like that
+
+const stores = {
+
+  store1:'a store',
+  store2:'another store'
+}
+
+const ccar ={
+
+  id:1,
+  brand: 'Ford',
+  doord: 4,
+  wheels: 4,
+  color: 'red',
+  year:'2017',
+  model:'some model',
+  stores:stores // pass the object of stores in the cars
+}
+function *storedGenerator(storesObj){
+
+  yield storesObj.store1;
+  yield storesObj.store2
+}
+
+function * carsGenerator(carObj){
+
+  yield carObj.brand;
+  yield carObj.year;
+  yield carObj.model;
+  yield* storedGenerator(carObj.stores); // you can pass a generator in a generator like this
+
+}
+let newCar =[];
+for(let i of carsGenerator(ccar)){
+
+    newCar = [...newCar,i];
+}
+console.log(newCar);
+
+
+
+
+
+
+
+
+
+
+
+
