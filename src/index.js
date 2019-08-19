@@ -4,8 +4,9 @@ import ReactDOM from 'react-dom'; // is to render something on the root
 
 //COMPONENTS
 import Header from './components/header.js'
+import Playground from './components/playground.js'
 
-// this is a component
+// this is a component the main component
 const App =()=>{
   //return React.createElement('h1', {className:'title'}, React.createElement('div',{className:'www'}, 'lkjlk'))
 
