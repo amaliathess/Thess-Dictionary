@@ -11,14 +11,28 @@ import NewsList from './components/list.js'
 class App extends Component {
   //return React.createElement('h1', {className:'title'}, React.createElement('div',{className:'www'}, 'lkjlk'))
   state = {
-  	news:JSON
+  	news:JSON,
+  	filtered:[]
+  }
+  getKeyword =(event)=>{
+  	//console.log(event.target.value);
+  	let keyword = event.target.value;
+  	let filtered = this.state.news.filter((item)=>{
+
+  		return item.title.indexOf(keyword) > -1
+  	})
+console.log(filtered)
+this.setState({
+	filtered
+})
   }
 render(){
-	console.log(this.state.news);
+	let newFiltered =this.state.filtered;
+	let newsAll = this.state.news;
   return (
   	<div>
-  		<Header/>
-  		<NewsList news={this.state.news} amy='me'>
+  		<Header keywords={this.getKeyword}/>
+  		<NewsList news={newFiltered.length === 0 ? newsAll: newFiltered} amy='me'>
   			 hello there {/* this is send with props in the component */}
   		</NewsList>
   	</div>

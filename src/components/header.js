@@ -35,6 +35,7 @@ class Header extends Component {
 	
 	}
 	render(){
+		//console.log(this.props.keywords);
 		// const style ={
 		// 	background:'red'
 		// }
@@ -52,8 +53,10 @@ class Header extends Component {
 	  		className= "logo"
 	  		onClick={()=>console.log('I was clicked')}
 	  		>Logo</div>
+	  		{/*onChange={(e) => this.inputChangeHandler(e)}*/}
 	  		<input 
-			onChange={(e) => this.inputChangeHandler(e)}
+			
+			onChange={this.props.keywords}
 	  		type="text"/>
 	  		
 	  	</header>
