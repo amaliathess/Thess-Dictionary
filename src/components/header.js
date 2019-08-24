@@ -19,20 +19,35 @@ const user ={
 class Header extends Component {
 	state ={ // when you user state and you change the value react rerenders the function not the holl page just the function
 		title:'The eywords are:',
-		keywords:''
+		active:false,
+		keywords:'',
+		theclass:'active'
 	}
 	inputChangeHandler = (event) =>{
 		//console.log(event.target.value);
+		const value = event.target.value === '' ? false : true;
+		const theclass = event.target.value === '' ? event.target.class = 'non-active' : event.target.class = 'active';
 		this.setState({
-
-			keywords: event.target.value
+			active:value,
+			keywords: event.target.value,
+			theclass: theclass
 		})
 	
 	}
 	render(){
-		console.log(this.state.keywords);
+		// const style ={
+		// 	background:'red'
+		// }
+		// console.log(this.state.keywords);
+		// if (this.state.keywords != ''){
+		// 	style.background = 'blue'
+		// }else{
+		// 	style.background = 'red'
+
+		// }
+		
 	  return (
-	  	<header >
+	  	<header style = {{background:`${this.state.active ?'red':'blue'}`}} className = {this.state.theclass}>
 	  		<div 
 	  		className= "logo"
 	  		onClick={()=>console.log('I was clicked')}
@@ -40,8 +55,7 @@ class Header extends Component {
 	  		<input 
 			onChange={(e) => this.inputChangeHandler(e)}
 	  		type="text"/>
-	  		<div>{this.state.title}</div>
-	  		<div>{this.state.keywords}</div>
+	  		
 	  	</header>
 	  // <div>{user.name}</div>
 	  // this is the {getYear()}

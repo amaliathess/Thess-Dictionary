@@ -18,7 +18,9 @@ render(){
   return (
   	<div>
   		<Header/>
-  		<NewsList news={this.state.news} amy='me'/>
+  		<NewsList news={this.state.news} amy='me'>
+  			 hello there {/* this is send with props in the component */}
+  		</NewsList>
   	</div>
 
   	)
