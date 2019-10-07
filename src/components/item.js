@@ -23,8 +23,8 @@ const NewsItem =({item})=>{
 
 	return(
 				<div className={`${item_grey}`}{...news_item}>
-					<h3>{item.title}</h3>
-					<div>{item.feed}</div>
+					<h3>{item.thess}</h3>
+					<div>{item.ath}</div>
 				</div>
 		)
 }

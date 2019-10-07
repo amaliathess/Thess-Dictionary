@@ -19,7 +19,7 @@ class App extends Component {
   	let keyword = event.target.value;
   	let filtered = this.state.news.filter((item)=>{
 
-  		return item.title.indexOf(keyword) > -1
+  		return item.thess.indexOf(keyword) > -1
   	})
 console.log(filtered)
 this.setState({

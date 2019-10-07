@@ -1,4 +1,7 @@
 
+---- install----
+npx create-react-app .
+
 map and filter always return something
 
 ---- ARRAY HELPERS  ----

@@ -11,10 +11,15 @@ header{
 
 .logo{
 	color: #fff;
-	font-size: 40px;
 	font-family: 'Open Sans';
+	padding: 10px 0;
+}
+.logo h2{
+	font-size: 40px;
+	cursor: pointer;
 }
 header input{
 	font-size: 20px;
 	margin:20px 0;
+
 }

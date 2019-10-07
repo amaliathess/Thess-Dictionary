@@ -14,6 +14,12 @@ const user ={
 	age:35
 }
 
+const randline = ()=> { 
+
+const gethim = ["Κλαίν μάιν", "έλα ρε καρτάση", "αφού σε λέω", "ντεμεκ", "ναι ρε κασέρια τα λέμε όλα τι θες ?"];
+	return gethim[Math.floor(Math.random() * gethim.length)]; }
+console.log(randline);
+
 
 //functional class
 class Header extends Component {
@@ -49,10 +55,16 @@ class Header extends Component {
 		
 	  return (
 	  	<header style = {{background:`${this.state.active ?'red':'blue'}`}} className = {this.state.theclass}>
+
 	  		<div 
 	  		className= "logo"
-	  		onClick={()=>console.log('I was clicked')}
-	  		>Logo</div>
+	  		onClick={()=>alert(randline())}
+	  		>
+	  		<small>Λεξικο για Αθηναίους</small>
+
+	  			<h2>Τι ψάχνεις?</h2>
+
+	  		</div>
 	  		{/*onChange={(e) => this.inputChangeHandler(e)}*/}
 	  		<input 
 			
