@@ -1,6 +1,7 @@
 
 ---- install----
-npx create-react-app .
+npx create-react-app . || npx create-react-app my_app
+npm install react-router-dom react-fontawesome βάλε και το cdn react-simple-sidenav react-slick --save
 
 map and filter always return something
 

@@ -33,7 +33,7 @@ render(){
   	<div>
   		<Header keywords={this.getKeyword}/>
   		<NewsList news={newFiltered.length === 0 ? newsAll: newFiltered} amy='me'>
-  			 hello there {/* this is send with props in the component */}
+  		{/*    // hello there this is send with props in the component */}
   		</NewsList>
   	</div>
 
