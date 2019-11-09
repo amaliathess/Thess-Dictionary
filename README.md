@@ -10,4 +10,3 @@ like this ..
 
 ![whats fouit](https://github.com/amaliathess/Thess-Dictionary/blob/master/images_for_read_me/fouit.png)
 
-## Hope you find it cute ...
